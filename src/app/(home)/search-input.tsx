@@ -10,7 +10,7 @@ import { useRef, useState } from "react"
 export const SearchInput = () => {
     const [search, setSearch] = useSearchParam();
 
-    const [value , setValue ] = useState("search");
+    const [value , setValue ] = useState(search);
     const inputRef = useRef<HTMLInputElement>(null);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
