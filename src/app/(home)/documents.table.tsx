@@ -13,11 +13,16 @@ interface DocumentsTableProps {
     status: PaginationStatus;
 }
 
+
+
 export const DocumentsTable = ({
     documents,
     loadMore,
     status
 }: DocumentsTableProps) => {
+
+    const sortedDocuments = documents?.slice().sort((a, b) => b._creationTime - a._creationTime);
+
     return (
         <div className="max-w-screen-xl mx-auto px-16 flex flex-col gap-5">
             {documents === undefined ? (
@@ -43,7 +48,7 @@ export const DocumentsTable = ({
                         </TableBody>
                     ): (
                         <TableBody>
-                            {documents.map((document) => (
+                            {sortedDocuments?.map((document) => (
                                 <DocumentRow key={document._id} document={document} />
                             ))}
                         </TableBody>
